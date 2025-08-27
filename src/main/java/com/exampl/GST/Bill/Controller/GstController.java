@@ -22,8 +22,7 @@ public class GstController {
     BillService billService;
 
     @Autowired
-    private MailService mailService;
-
+    MailService mailService;
 
     @PostMapping("/save-products")
     public String addProduct(@RequestBody List<Product> products) {

@@ -4,17 +4,17 @@ import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 public class TwilioService {
-    @Value("${twilio.account.sid}")
+    @Value("${twilio.account_sid}")
     private String accountSid;
 
-    @Value("${twilio.auth.token}")
+    @Value("${twilio.auth_token}")
     private String authToken;
 
-    @Value("${twilio.phone.number}")
+    @Value("${twilio.phone_number}")
     private String fromWhatsAppNumber;
 
     @PostConstruct

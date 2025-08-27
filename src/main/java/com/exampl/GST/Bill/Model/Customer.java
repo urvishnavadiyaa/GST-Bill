@@ -1,7 +1,6 @@
 package com.exampl.GST.Bill.Model;
 
 import jakarta.persistence.*;
-
 import java.time.LocalDate;
 
 @Entity

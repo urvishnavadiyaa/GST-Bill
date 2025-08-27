@@ -22,13 +22,12 @@ public class BillService {
     CustomerRepository customerRepository;
 
     @Autowired
-    private TwilioService twilioService;
+    TwilioService twilioService;
 
     public String saveProduct(List<Product> products) {
         billRepository.saveAll(products);
         return "Receive All Product Success Fully";
     }
-
 
     public String saveCustomer(Customer customers) throws CustomException {
         if (customers.getCustomer_name().isEmpty()) {
@@ -47,7 +46,14 @@ public class BillService {
             throw new CustomException("608", "please enter valid product count");
         }
 
+        Product product = billRepository.findByProductName(customers.getProduct_name());
+        if (product == null) {
+            throw new CustomException("637", "no product found");
+        }
+
+        int amount;
         try {
+            amount = billRepository.getProductAmount(customers.getProduct_name());
             int c = billRepository.getProductCount(customers.getProduct_name());
             if (customers.getProduct_count() > c) {
                 twilioService.OutOfStoc(
@@ -56,28 +62,18 @@ public class BillService {
                 );
                 throw new CustomException("604", "there are no stock available");
             }
-        } catch (CustomException ce) {
-            throw ce;
         } catch (Exception e) {
             throw new CustomException("605", "something went wrong " + e.getMessage());
         }
 
-        int amount;
-        try {
-            int amt = billRepository.getProductAmount(customers.getProduct_name());
-            amount = amt;
-        } catch (Exception e) {
-            throw new CustomException("606", "something went wrong" + e.getMessage());
-        }
+//        int amount;
+//        try {
+//            amount = billRepository.getProductAmount(customers.getProduct_name());
+//        } catch (Exception e) {
+//            throw new CustomException("606", "something went wrong" + e.getMessage());
+//        }
 
-        Product product = null;
         try {
-            try {
-                product = billRepository.findByProductName(customers.getProduct_name());
-            } catch (Exception e) {
-                throw new CustomException("637", "no product found");
-            }
-
             int totalamt = getTotalAmount(customers.getProduct_count(), amount);
             double total_amount = totalamt + calculate_Gst(totalamt);
             LocalDate ld = LocalDate.now();
@@ -127,8 +123,5 @@ public class BillService {
     public double calculate_Gst(long value) {
         return value * (18.0 / 100);
     }
-
-
-
 
 }
