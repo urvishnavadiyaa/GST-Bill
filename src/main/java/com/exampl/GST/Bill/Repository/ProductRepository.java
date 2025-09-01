@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Repository
-public interface BillRepository extends JpaRepository<Product, Integer> {
+public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     @Query(value = "SELECT stock FROM product WHERE LOWER(product_name) = LOWER(?1)", nativeQuery = true)
     int getProductCount(String productName);
@@ -19,6 +19,4 @@ public interface BillRepository extends JpaRepository<Product, Integer> {
 
     Product findByProductName(String productName);
 
-    @Query(value = "SELECT * FROM customer WHERE local_date = :today", nativeQuery = true)
-    List<Product> findByLocalDate1(LocalDate today);
 }

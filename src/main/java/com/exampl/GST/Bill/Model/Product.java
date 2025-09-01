@@ -8,11 +8,13 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    private int id;
 
-    String productName;
-    int price;
-    int stock;
+    @Column(name = "product_name", unique = true, nullable = false)
+    private String productName;
+    private int price;
+    private int stock;
+    private int threshHold;
 
     public int getId() {
         return id;
@@ -44,5 +46,13 @@ public class Product {
 
     public void setStock(int stock) {
         this.stock = stock;
+    }
+
+    public int getThreshHold() {
+        return threshHold;
+    }
+
+    public void setThreshHold(int threshHold) {
+        this.threshHold = threshHold;
     }
 }
