@@ -5,6 +5,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
+import java.util.List;
+
 @Repository
 public interface BillRepository extends JpaRepository<Product, Integer> {
 
@@ -15,4 +18,7 @@ public interface BillRepository extends JpaRepository<Product, Integer> {
     int getProductAmount(String productName);
 
     Product findByProductName(String productName);
+
+    @Query(value = "SELECT * FROM customer WHERE local_date = :today", nativeQuery = true)
+    List<Product> findByLocalDate1(LocalDate today);
 }
