@@ -1,35 +1,53 @@
-HELP.md
+# ========================
+# 📦 Build Artifacts
+# ========================
 target/
-.mvn/wrapper/maven-wrapper.jar
+build/
+dist/
+nbbuild/
+nbdist/
+.nb-gradle/
+
+# Allow target/build inside src folders (optional)
 !**/src/main/**/target/
 !**/src/test/**/target/
+!**/src/main/**/build/
+!**/src/test/**/build/
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
+# ========================
+# 🔧 Maven Wrapper
+# ========================
+.mvn/wrapper/maven-wrapper.jar
 
-### IntelliJ IDEA ###
-.idea
+# ========================
+# 🧪 IDE Configs
+# ========================
+
+## IntelliJ IDEA
+.idea/
 *.iws
 *.iml
 *.ipr
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### VS Code ###
+## VS Code
 .vscode/
 
+## Spring Tool Suite (STS)
+.apt_generated/
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans/
+.sts4-cache/
+
+## NetBeans
+/nbproject/private/
+HELP.md
+
+# ========================
+# 🔐 Environment & Secrets
+# ========================
 .env
+.env.local
+application-local.properties
