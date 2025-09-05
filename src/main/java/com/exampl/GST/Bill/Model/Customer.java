@@ -47,8 +47,8 @@ public class Customer {
         return customer_name;
     }
 
-    public void setCoustomer_name(String coustomer_name) {
-        this.customer_name = coustomer_name;
+    public void setCustomer_name(String customer_name) {
+        this.customer_name = customer_name;
     }
 
     public String getMobile_number() {

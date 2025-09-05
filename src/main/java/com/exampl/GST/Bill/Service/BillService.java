@@ -92,7 +92,7 @@ public class BillService {
 
         productRepository.save(product);
         if (product.getStock() <= product.getThreshHold()) {
-            twilioService.UpdateMassage(
+            twilioService.UpdateMessage(
                     "+91" + customers.getMobile_number(),
                     "please Update Stock"
             );

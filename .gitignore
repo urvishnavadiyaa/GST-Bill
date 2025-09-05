@@ -50,4 +50,5 @@ HELP.md
 # ========================
 .env
 .env.local
+application.properties
 application-local.properties
