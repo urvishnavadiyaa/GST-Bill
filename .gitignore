@@ -22,7 +22,6 @@ nbdist/
 # ========================
 # 🧪 IDE Configs
 # ========================
-
 ## IntelliJ IDEA
 .idea/
 *.iws
@@ -48,7 +47,6 @@ HELP.md
 # ========================
 # 🔐 Environment & Secrets
 # ========================
-.env
+.env*
+!.env.example
 .env.local
-application.properties
-application-local.properties
