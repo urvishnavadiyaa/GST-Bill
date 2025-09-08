@@ -47,6 +47,5 @@ HELP.md
 # ========================
 # 🔐 Environment & Secrets
 # ========================
-.env*
-!.env.example
+.env
 .env.local
